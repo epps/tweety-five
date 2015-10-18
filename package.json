@@ -1,0 +1,11 @@
+{
+  "name": "tweety-five",
+  "version": "0.0.1",
+  "description": "An application that fetches 25 tweets from user timelines via Twitter's RESTful API.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Erik Eppel",
+  "license": "ISC"
+}

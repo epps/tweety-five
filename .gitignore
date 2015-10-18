@@ -1,0 +1,9 @@
+# Environmental Variables
+.env
+
+# Dependencies 
+node_modules
+lib
+
+# Projects Notes
+NOTES.md

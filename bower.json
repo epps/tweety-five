@@ -1,0 +1,20 @@
+{
+  "name": "tweety-five",
+  "version": "0.0.1",
+  "authors": [
+    "Erik Eppel <eceppel@gmail.com>"
+  ],
+  "description": "An application that fetches 25 tweets from user timelines via Twitter's RESTful API.",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ]
+}
