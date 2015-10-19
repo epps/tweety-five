@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tweetyFive">
+<head>
+  <meta charset="UTF-8">
+  <title>Tweety-five</title>
+</head>
+<body>
+  <h1>Tweety-five</h1>
+
+  <div ng-controller="SearchController as search">
+
+    <form name="search.form"
+          ng-submit="search.searchUser(search.screenName)">
+
+      <input type="text"
+             ng-model="search.screenName">
+      <input type="submit">
+    </form>
+
+    <ul>
+      <li ng-repeat="tweet in search.results">
+        <span>{{ tweet.text }}</span>
+        <span>{{ tweet.timeStamp | date:'medium' }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <script src="socket.io/socket.io.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-socket-io/socket.js"></script>
+  <script src="app/app.js"></script>
+</body>
+</html>
