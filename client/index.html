@@ -2,29 +2,46 @@
 <html lang="en" ng-app="tweetyFive">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Erik Eppel">
+  <meta name="description" content="Tweety-five fetches the 25 most recent tweets from the timeline of the user you search for.">
   <title>Tweety-five</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h1>Tweety-five</h1>
 
-  <div ng-controller="SearchController as search">
+  <main class="container" ng-controller="SearchController as search">
+    <h1><i class="fa fa-twitter"></i> Tweety-five</h1>
 
-    <form name="search.form"
+    <form class="form-inline"
+          name="search.form"
           ng-submit="search.searchUser(search.screenName)">
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">@</div>
+          <input class="form-control"
+                 type="text"
+                 ng-model="search.screenName"
+                 placeholder="user">
+        </div>
+        <input type="submit"
+               value="Search"
+               class="btn btn-primary">
+      </div>
+    </form> <!-- end of form -->
 
-      <input type="text"
-             ng-model="search.screenName">
-      <input type="submit">
-    </form>
-
-    <ul>
-      <li ng-repeat="tweet in search.results">
+    <ul class="list-group">
+      <li ng-repeat="tweet in search.results" class="list-group-item">
         <span>{{ tweet.text }}</span>
         <span>{{ tweet.timeStamp | date:'medium' }}</span>
       </li>
-    </ul>
-  </div>
+    </ul> <!-- end of list-group -->
 
+  </main>
+
+  <!-- Scripts -->
   <script src="socket.io/socket.io.js"></script>
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-socket-io/socket.js"></script>
