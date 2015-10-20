@@ -19,6 +19,7 @@
   ],
   "dependencies": {
     "angular": "~1.4.7",
-    "angular-socket-io": "~0.7.0"
+    "angular-socket-io": "~0.7.0",
+    "angular-sanitize": "~1.4.7"
   }
 }
