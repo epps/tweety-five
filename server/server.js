@@ -46,10 +46,6 @@ function getTimeLineCB( error, data, response ) {
   }
 }
 
-function matchHandler(match) {
-    return '<a href="'+ match + '">'+match+'</a>';
-}
-
 // Set the port for http server 
 http.listen( 8000, function() {
   console.log( 'Server listening on 8000' );
