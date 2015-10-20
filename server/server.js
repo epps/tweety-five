@@ -39,10 +39,15 @@ function getTimeLineCB( error, data, response ) {
   } else {
     var tweets = [];
     data.forEach( function( tweet ) {
+      console.log(tweet);
       tweets.push( { text: tweet.text, timeStamp: (new Date(tweet.created_at)) } );
     });
     io.emit( 'search results', tweets );
   }
+}
+
+function matchHandler(match) {
+    return '<a href="'+ match + '">'+match+'</a>';
 }
 
 // Set the port for http server 
