@@ -6,7 +6,7 @@ var express = require( 'express' );
 var app = express();
 var http = require( 'http' ).Server( app );
 var io = require( 'socket.io' )( http );
-var Twit = require( 'Twit' );
+var Twit = require( 'twit' );
 var T = new Twit({
   consumer_key: process.env.consumerKey,
   consumer_secret: process.env.consumerSecret,
