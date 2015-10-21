@@ -25,28 +25,42 @@
                  type="text"
                  ng-model="search.screenName"
                  placeholder="user">
+          <span class="input-group-btn">
+            <button class="btn btn-primary">Search</button>
+          </span>
         </div>
-        <input type="submit"
-               value="Search"
-               class="btn btn-primary">
       </div>
     </form> <!-- end of form -->
 
-    <ul class="list-group">
+    <!-- Tweets -->
+    <ul class="list-group" ng-show="!search.searchError">
       <li ng-repeat="tweet in search.results" class="list-group-item">
-        <!-- <span>{{ tweet.text }}</span> -->
-        <span ng-bind-html="tweet.text | parseUrls"></span>
-        <span>{{ tweet.timeStamp | date:'medium' }}</span>
+        <div class="row">
+          <div class="col-md-3">
+            <img ng-src="{{ tweet.profileImgUrl }}" class="profile-image">
+            <span class="user-name">{{ tweet.userName }}</span>
+            <a ng-href="https://twitter.com/{{ tweet.userHandle }}" target="_blank" class="user-names">@{{ tweet.userHandle }}</a>
+          </div>
+          <div class="col-md-9">
+            <span ng-bind-html="tweet.text | parseUrls" class="tweet"></span>
+            <span>{{ tweet.timeStamp | date:'M/d/yy h:mm a' }}</span>
+          </div>
+        </div>
       </li>
     </ul> <!-- end of list-group -->
 
+    <!-- Error message -->
+    <div class="alert alert-danger" ng-show="search.searchError">{{ search.error }}</div>
+
   </main>
 
-  <!-- Scripts -->
+  <!-- App Dependcies -->
   <script src="socket.io/socket.io.js"></script>
   <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-sanitize/angular-sanitize.js"></script>
   <script src="lib/angular-socket-io/socket.js"></script>
+
+  <!-- App -->
   <script src="app/app.js"></script>
   <script src="app/parseUrls.filter.js"></script>
   <script src="app/search.controller.js"></script>

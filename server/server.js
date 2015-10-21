@@ -39,8 +39,15 @@ function getTimeLineCB( error, data, response ) {
   } else {
     var tweets = [];
     data.forEach( function( tweet ) {
-      console.log(tweet);
-      tweets.push( { text: tweet.text, timeStamp: (new Date(tweet.created_at)) } );
+      tweets.push( { 
+        text: tweet.text,
+        timeStamp: (new Date(tweet.created_at)),
+        userName: tweet.user.name,
+        userHandle: tweet.user.screen_name,
+        description: tweet.user.description,
+        profileImgUrl: tweet.user.profile_image_url_https.replace('_normal', '')
+      });
+
     });
     io.emit( 'search results', tweets );
   }
