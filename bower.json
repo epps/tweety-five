@@ -5,15 +5,14 @@
     "Erik Eppel <eceppel@gmail.com>"
   ],
   "description": "An application that fetches 25 tweets from user timelines via Twitter's RESTful API.",
-  "main": "",
-  "moduleType": [],
+  "main": "client/app/app.js",
+  "moduleType": [ "node" ],
   "license": "MIT",
   "homepage": "",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "lib",
     "test",
     "tests"
   ],
