@@ -2,6 +2,7 @@ angular.module( 'tweetyFive' )
 
 .controller( 'SearchController', [ 'Socket', function( Socket ) {
   var vm = this;
+  vm.searchError = false;
 
   /////// Bindable members ///////
   vm.searchUser = searchUser;
@@ -12,12 +13,13 @@ angular.module( 'tweetyFive' )
   });
 
   Socket.on( 'search results', function( data ) {
-    console.log( data );
+    vm.searchError = false;
     vm.results = data;
   });
 
   Socket.on( 'search error', function( data ) {
-    console.log( data );
+    vm.searchError = true;
+    vm.error = data;
   });
 
   /////// Function declarations ///////
