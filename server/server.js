@@ -50,5 +50,5 @@ io.on( 'connection', function( socket ) {
 // Set the port for http server 
 var port = process.env.PORT || 8000;
 http.listen( port, function() {
-  console.log( 'Server listening on port' );
+  console.log( 'Server listening on port', port );
 });
