@@ -22,38 +22,33 @@ io.on( 'connection', function( socket ) {
   console.log( 'Client connected' );
 
   // Listen for search event
-  socket.on( 'search user', searchUserTimeline );
+  socket.on( 'search user', function( screenName ) {
 
+    T.get( 'statuses/user_timeline', { screen_name: screenName, count: 25 }, function( error, data, response ) {
+      if ( error ) {
+        console.log('Error: ', error );
+        socket.emit( 'search error', error.message );
+      } else {
+        var tweets = [];
+        data.forEach( function( tweet ) {
+          tweets.push( { 
+            text: tweet.text,
+            timeStamp: (new Date(tweet.created_at)),
+            userName: tweet.user.name,
+            userHandle: tweet.user.screen_name,
+            description: tweet.user.description,
+            profileImgUrl: tweet.user.profile_image_url_https.replace('_normal', '')
+          });
+        });
+        socket.emit( 'search results', tweets );
+      }
+    });
+
+  });
 });
 
-// Utility functions for searching timelines and processing the data returned  
-function searchUserTimeline( screenName ) {
-  // fetch user timeline from Twitter REST API
-  T.get( 'statuses/user_timeline', { screen_name: screenName, count: 25 }, getTimeLineCB );
-}
-
-function getTimeLineCB( error, data, response ) {
-  if ( error ) {
-    console.log('Error: ', error );
-    io.emit( 'search error', error.message );
-  } else {
-    var tweets = [];
-    data.forEach( function( tweet ) {
-      tweets.push( { 
-        text: tweet.text,
-        timeStamp: (new Date(tweet.created_at)),
-        userName: tweet.user.name,
-        userHandle: tweet.user.screen_name,
-        description: tweet.user.description,
-        profileImgUrl: tweet.user.profile_image_url_https.replace('_normal', '')
-      });
-
-    });
-    io.emit( 'search results', tweets );
-  }
-}
-
 // Set the port for http server 
-http.listen( 8000, function() {
-  console.log( 'Server listening on 8000' );
+var port = process.env.PORT || 8000;
+http.listen( port, function() {
+  console.log( 'Server listening on port', port );
 });
