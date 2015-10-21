@@ -3,6 +3,7 @@ angular.module( 'tweetyFive' )
 .controller( 'SearchController', [ 'Socket', function( Socket ) {
   var vm = this;
   vm.searchError = false;
+  vm.beforeSearch = true;
 
   /////// Bindable members ///////
   vm.searchUser = searchUser;
@@ -24,6 +25,7 @@ angular.module( 'tweetyFive' )
 
   /////// Function declarations ///////
   function searchUser( name ) {
+    vm.beforeSearch = false;
     Socket.emit( 'search user', name );
     vm.screenName = '';
   };

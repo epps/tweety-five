@@ -15,6 +15,11 @@
   <main class="container" ng-controller="SearchController as search">
     <h1><i class="fa fa-twitter"></i> Tweety-five</h1>
 
+    <div class="page-header" ng-if="search.beforeSearch">
+      <h3>Tweety-five <small>distills the vast Twittersphere to its simplest state: the 25 most recent tweets from the user you search for.</small></h3>
+      <p>Type in the handle of any Twitter user, minus the @ symbol, to get started.</p>
+    </div>
+
     <form class="form-inline"
           name="search.form"
           ng-submit="search.searchUser(search.screenName)">
