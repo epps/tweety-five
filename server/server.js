@@ -54,6 +54,7 @@ function getTimeLineCB( error, data, response ) {
 }
 
 // Set the port for http server 
-http.listen( 8000, function() {
-  console.log( 'Server listening on 8000' );
+var port = process.env.PORT || 8000;
+http.listen( port, function() {
+  console.log( 'Server listening on port' );
 });
