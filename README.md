@@ -2,6 +2,8 @@
 
 > Tweety-five is an AngularJS application that fetches the 25 most recent tweets from the timeline of a searched-for user.
 
+![Tweety-five search results](tweety_five_search_results.jpg)
+
 ## Requirements
 
 ### Backend
