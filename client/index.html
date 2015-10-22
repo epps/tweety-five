@@ -9,10 +9,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <!-- From AngularJS Docs: For the best result with ng-cloak, the angular.js script must be loaded in the head section -->
+  <script src="lib/angular/angular.js"></script>
 </head>
 <body>
 
-  <main class="container" ng-controller="SearchController as search">
+  <main class="container" ng-controller="SearchController as search" ng-cloak>
+
     <h1><i class="fa fa-twitter"></i> Tweety-five</h1>
 
     <div class="page-header" ng-if="search.beforeSearch">
@@ -48,7 +51,7 @@
             <a ng-href="https://twitter.com/{{ tweet.userHandle }}"
                target="_blank"
                class="user-names" 
-               ng-bind="@{{ tweet.userHandle }}">
+               >@{{ tweet.userHandle }}
             </a>
           </div>
           <!-- Tweet text -->
@@ -70,7 +73,6 @@
 
   <!-- App Dependcies -->
   <script src="socket.io/socket.io.js"></script>
-  <script src="lib/angular/angular.js"></script>
   <script src="lib/angular-sanitize/angular-sanitize.js"></script>
   <script src="lib/angular-socket-io/socket.js"></script>
 
