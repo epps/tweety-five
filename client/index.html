@@ -14,60 +14,11 @@
 </head>
 <body>
 
-  <main class="container" ng-controller="SearchController as search" ng-cloak>
+  <main class="container" ng-cloak>
 
     <h1><i class="fa fa-twitter"></i> Tweety-five</h1>
 
-    <div class="page-header" ng-if="search.beforeSearch">
-      <h3>Tweety-five <small>distills the vast Twittersphere to its simplest state: the 25 most recent tweets from the user you search for.</small></h3>
-      <p>Type in the handle of any Twitter user, minus the @ symbol, to get started.</p>
-    </div>
-    <!-- Search form -->
-    <form class="form-inline"
-          name="search.form"
-          ng-submit="search.searchUser(search.screenName)">
-      <div class="form-group">
-        <div class="input-group">
-          <div class="input-group-addon">@</div>
-          <input class="form-control"
-                 type="text"
-                 ng-model="search.screenName"
-                 placeholder="user">
-          <span class="input-group-btn">
-            <button class="btn btn-primary">Search</button>
-          </span>
-        </div>
-      </div>
-    </form> <!-- end of form -->
-
-    <!-- Tweets -->
-    <ul class="list-group" ng-show="!search.searchError">
-      <li ng-repeat="tweet in search.results" class="list-group-item">
-        <div class="row">
-          <!-- User profile image, name and handle link -->
-          <div class="col-md-3">
-            <img ng-src="{{ tweet.profileImgUrl }}" class="profile-image">
-            <span class="user-name" ng-bind="tweet.userName"></span>
-            <a ng-href="https://twitter.com/{{ tweet.userHandle }}"
-               target="_blank"
-               class="user-names" 
-               >@{{ tweet.userHandle }}
-            </a>
-          </div>
-          <!-- Tweet text -->
-          <div class="col-md-9">
-            <span ng-bind-html="tweet.text | parseUrls" class="tweet"></span>
-            <span ng-bind="tweet.timeStamp | date:'M/d/yy h:mm a' "></span>
-          </div>
-        </div>
-      </li>
-    </ul> <!-- end of list-group -->
-
-    <!-- Error message -->
-    <div class="alert alert-danger"
-         ng-show="search.searchError"
-         ng-bind="search.error">
-    </div>
+    <search-twitter-users></search-twitter-users>
 
   </main>
 
@@ -79,7 +30,7 @@
   <!-- App -->
   <script src="app/app.js"></script>
   <script src="app/parseUrls.filter.js"></script>
-  <script src="app/search.controller.js"></script>
+  <script src="app/search.directive.js"></script>
   <script src="app/socket.factory.js"></script>
 </body>
 </html>
